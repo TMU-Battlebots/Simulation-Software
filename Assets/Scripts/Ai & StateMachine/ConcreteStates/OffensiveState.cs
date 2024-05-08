@@ -13,14 +13,14 @@ public class OffensiveState : State //L3
         base.EnterState();
         //ai.SetCurrentStateName("Attack Target State: \n Full target tracking with aggressive movement");
         ai.SetCurrentStateName(2);
-        Debug.Log("Entered Offense");
+        //Debug.Log("Entered Offense");
 
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Debug.Log("Exit Offense");
+        //Debug.Log("Exit Offense");
     }
 
     public override void Update()
@@ -31,13 +31,13 @@ public class OffensiveState : State //L3
 
         /*Match can reach "spin lock" behavior where both bots are spinning 
          * rapidly side by side trying to find an opening
-         * Im thinking it might be cool to have a timer where if we're in this situation for too long
+         * Im thinking it might be cool to have a x where if we're in this situation for too long
          * It can momentarily turn off its motors, geta perfect track on the enemy
          * And then attack
          */
 
         /*Also need to implement the pushing -> pin to wall-> ->wedge -> BAM attack, typical for a hammersaw
-         * when L4 detected, run an extremely short timer where if the player is still in it, disable movement on player?
+         * when L4 detected, run an extremely short x where if the player is still in it, disable movement on player?
          * acts as fork wedging the player
          * 
          * 

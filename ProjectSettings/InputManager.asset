@@ -169,17 +169,17 @@ InputManager:
     m_Name: Vertical
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: 
-    altNegativeButton: 
-    altPositiveButton: 
+    negativeButton: joystick button 1
+    positiveButton: joystick button 0
+    altNegativeButton: joystick button 6
+    altPositiveButton: joystick button 7
     gravity: 0
     dead: 0.19
     sensitivity: 1
     snap: 0
-    invert: 1
+    invert: 0
     type: 2
-    axis: 1
+    axis: 2
     joyNum: 0
   - serializedVersion: 3
     m_Name: Fire1
@@ -485,3 +485,4 @@ InputManager:
     type: 2
     axis: 5
     joyNum: 0
+  m_UsePhysicalKeys: 1

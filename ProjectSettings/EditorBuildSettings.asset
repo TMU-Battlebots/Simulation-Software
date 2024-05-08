@@ -6,6 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+    path: Assets/Scenes/MainMenu.unity
+    guid: 6e8e7a2ce1ee50547a88b9669ee17c5f
+  - enabled: 1
+    path: Assets/Scenes/PVPv1.unity
+    guid: 47410aeb6dd0abe4783032a36b86e890
+  - enabled: 1
+    path: Assets/Scenes/PVEv2working.unity
+    guid: b2ea64e2fce738a42a1cc92f59203cb4
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: f1ef5cbb0ac09864d855f29c02ad65f4, type: 2}

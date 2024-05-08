@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cones
+  - Organizer
+  - Scoring
+  - Scoring1
+  - Scoring2
+  - ScoringAI
+  - P1Wins
   layers:
   - Default
   - TransparentFX
@@ -14,7 +20,7 @@ TagManager:
   - UI
   - Background
   - SlipperyWalls
-  - 
+  - FarbackGround
   - 
   - 
   - 
@@ -47,6 +53,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Cones
+    uniqueID: 3815845887
     locked: 0
   - name: Walls
     uniqueID: 106080971

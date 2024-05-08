@@ -17,13 +17,13 @@ public class IdleState : State
     {
         base.EnterState();
         ai.SetCurrentStateName(3);
-        Debug.Log("Entered IdleState");
+        //Debug.Log("Entered IdleState");
     }
 
     public override void ExitState() 
     {
         base.ExitState();
-        Debug.Log("Exited IdleState");
+        //Debug.Log("Exited IdleState");
     }
     public override void Update() 
     {

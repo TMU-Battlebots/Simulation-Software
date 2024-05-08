@@ -26,15 +26,17 @@ public class SearchTargetState : State //Inhrerit from State class, which itself
         base.EnterState();
         //ai.SetCurrentStateName("Search Target State: \n Limited tracking and reserved movement, can move to center if lose target entirely");
         ai.SetCurrentStateName(0);
-        Debug.Log("Entered SearchTargetState");
+        //Debug.Log("Entered SearchTargetState");
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Debug.Log("Exit SearchTargetState");
+        //Debug.Log("Exit SearchTargetState");
     }
 
+
+    
     public override void Update()
     {
         base.Update();

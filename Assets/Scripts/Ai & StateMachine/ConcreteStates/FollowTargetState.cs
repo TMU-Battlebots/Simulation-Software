@@ -13,13 +13,13 @@ public class FollowTargetState : State //L2
         base.EnterState();
         //ai.SetCurrentStateName("Follow Target State: \n Full target tracking");
         ai.SetCurrentStateName(1);
-        Debug.Log("Entered FollowTargetState");
+        //Debug.Log("Entered FollowTargetState");
     }
 
     public override void ExitState()
     {
         base.ExitState();
-        Debug.Log("Exit FollowTargetState");
+        //Debug.Log("Exit FollowTargetState");
     }
 
     public override void Update()

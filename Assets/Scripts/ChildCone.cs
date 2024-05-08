@@ -73,12 +73,4 @@ public class ChildCone : MonoBehaviour
             this.rend.enabled = b;
         }
     }
-
-    private void ToggleColor()
-    {
-        
-    }
-
-
-
 }
