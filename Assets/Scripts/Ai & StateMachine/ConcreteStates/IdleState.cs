@@ -12,7 +12,7 @@ public class IdleState : State
     //Virtual: lets you override them i rmb sth similar in Java was it 
     //But doesnt force you like abstract, its optional
 
-    //Does shit when state is first entered
+    //Does stuff when state is first entered
     public override void EnterState() 
     {
         base.EnterState();

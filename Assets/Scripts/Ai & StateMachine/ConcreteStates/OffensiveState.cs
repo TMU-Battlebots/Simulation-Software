@@ -51,11 +51,7 @@ public class OffensiveState : State //L3
         /*Finally movement is kinda weird rn. Impulse and high drag makes for a good convincing movement
          * but it makes pinning not as satisfying and accurate since the drag is so high
          * Might have to change from impulse to Force2D but i rmb theres some problems w that
-         * current setup it kinda floaty (7 vs 10)
          */
-
-        
-
         if (ai.IsL3() != true && ai.IsL2() == true)
         {
             ai.StateMachine.ChangeState(ai.FollowTargetState);

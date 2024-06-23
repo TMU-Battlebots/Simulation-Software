@@ -12,7 +12,8 @@ public class SearchTargetState : State //Inhrerit from State class, which itself
     private bool investigateMarker;
 
     
-
+    //Its possible to create the methods used here instead of at AI (ie PlaceMarker(), GetMarker(), etc...).
+    //That would make the AI script look less bloated, but then you cant use Unitys Inspection system since these states arent connected to any component
     public SearchTargetState(AI ai, StateMachine stateMachine) : base(ai, stateMachine)
     {
         //Investigation state where bot will move straight towards detected L1 sensors in order to find Target
@@ -36,7 +37,7 @@ public class SearchTargetState : State //Inhrerit from State class, which itself
     }
 
 
-    
+     
     public override void Update()
     {
         base.Update();
@@ -52,19 +53,14 @@ public class SearchTargetState : State //Inhrerit from State class, which itself
                 investigateMarker = true;
 
             }       
-        else //outside of L1, move to center of arena to achieve full vision of arena
-        {
-            if (ai.GetMarker() == false) //makes sure the bot isnt already investigating before going to center.
+            else if (ai.GetMarker() == false) // makes sure the bot isnt already investigating before going to center.
             {
+            // outside of L1, move to center of arena to achieve full vision of arena
                 goCenter = true;
                 investigateMarker = false;
             }
            
-        }
-
-
-
-
+       
         //Switch state to FollowTargetState
         if (ai.IsL2() == true)
         {
@@ -80,17 +76,16 @@ public class SearchTargetState : State //Inhrerit from State class, which itself
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        if (goCenter == true)
-        {
-            ai.MoveToCenter();
-        }
+      
         if (investigateMarker == true)
         {
             ai.InvestigateMarker();
         }
+        if (goCenter == true)
+        {
+            ai.MoveToCenter();
+        }
 
 
     }
-    //slowly approach
-
 }
