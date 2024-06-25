@@ -40,11 +40,6 @@ public class VisionCone : MonoBehaviour
     int lastTrueIndex;
     [SerializeField] int[] coneStateTrue = {0, 0};
     
-    // Update is called once per frame
-    //fuck it putting toggle show render here
-    void Update()
-    {
-    }
 
     //Use this to get which cone is returning true
     //returns as an 2x1 array cuz theres potentially 2 cones that are

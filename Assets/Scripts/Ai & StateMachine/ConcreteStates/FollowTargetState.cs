@@ -28,7 +28,6 @@ public class FollowTargetState : State //L2
         //Base behavior of this state: Lock on to target
         ai.TrackingTarget();
 
-
         if (ai.IsL3() == true)
         {
             ai.StateMachine.ChangeState(ai.OffensiveState);

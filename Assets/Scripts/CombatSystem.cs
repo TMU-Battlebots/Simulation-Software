@@ -87,11 +87,13 @@ public class CombatSystem : MonoBehaviour
             damageNumber = (int)Round(attackPower);
     }
 
-    public void SetBoost(bool boostState) //called by Player to change attk equation
+    //I usesd to have an idea to have a shared energy/stamina system for both the attack power and boost, but that got cut at the end.
+    //Do this is currently unused.
+    public void SetBoost(bool boostState)
     {
         isBoosting = boostState;
     }
-
+    
     public void Energy()
     {
         if (isBoosting == false)

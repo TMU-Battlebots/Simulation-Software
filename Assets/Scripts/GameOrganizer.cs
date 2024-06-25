@@ -196,9 +196,8 @@ public class GameOrganizer : MonoBehaviour
     }
 
 
-    /*I realize i dont need have 2 seperate methods and a check i can just have one big checker for all 3 ints lmao but i got dooky bra
-     * in rn from that cps test
-     * 
+    /*I realize i dont need have 2 seperate methods and a check i can just have one big checker for 
+     * all 3 ints lmao but i got dooky brain rn from that cps test
      */
     public int PVPWinner() //use to determine index of winning player
     {

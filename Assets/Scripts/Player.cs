@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     //Physics Stats
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] float movementSpeed;
+    [SerializeField] float movementSpeed; 
     [SerializeField] float boostSpeed;
     [SerializeField] float currentSpeed;
     [SerializeField] float turnSpeed;
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     
 
     //Enemy Bot
-    bool toggleEnemy = true;
     [SerializeField] GameObject enemy;
 
 
@@ -36,7 +35,6 @@ public class Player : MonoBehaviour
     //for Health and Damage system
     [SerializeField] CombatSystem combatSystem;
     [SerializeField] GameObject explosion;
-    bool state = true;
 
     void Start()
     {
@@ -55,14 +53,11 @@ public class Player : MonoBehaviour
         QuitGame();
         if (combatSystem.DeathCheck() == true) //constantly check if this object is dead.
         {
-            state = false;
             Instantiate(explosion, this.transform);
             enabled = false;
             organizer.PlayerLoses(index);
         }
     }
-
-   
 
     void FixedUpdate()
     {
@@ -99,43 +94,24 @@ public class Player : MonoBehaviour
         rotationAngle -= steerInputs * turnSpeed;
         rb.MoveRotation(rotationAngle);
     }
-
-    
-
-    void OnorOff() //old
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            toggleEnemy = !toggleEnemy;
-            enemy.SetActive(toggleEnemy);
-
-        }
-    }
-
-    public void Boost2(float boost)
+    public void Boost2(float boost) //its a vector 2 yeah cuz unity is weird
     {
 
         if (boost == 1)
         {
             //Debug.Log("pluh!2");
             currentSpeed = boostSpeed;
-            combatSystem.SetBoost(true);
+            combatSystem.SetBoost(true); //unused
         }
         else
         {
             currentSpeed = movementSpeed;
-            combatSystem.SetBoost(false);
+            combatSystem.SetBoost(false); //unused
         }
     }
 
-    public bool GetState()
-    {
-        return state;
-    }
-    
 
-
-    void QuitGame()
+    void QuitGame() //freak button for the demo and stuff. 
     {
         if (Input.GetKeyDown(KeyCode.P))
         {

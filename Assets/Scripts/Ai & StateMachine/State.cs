@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State // the Car class for each Bus, Sedan, Bike
+public class State // the Vehicle class for each Bus, Sedan, Bike //Base script for other States to inherit
 {
-    //protected: private for everything other than scripts from this State class
+    //protected: private for everything other than scripts inherit from this State class
     //ie. each state has access to AI and StateMachine
     protected AI ai;
     protected StateMachine stateMachine;

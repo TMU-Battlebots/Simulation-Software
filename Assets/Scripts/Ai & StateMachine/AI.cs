@@ -11,30 +11,14 @@ using static UnityEngine.GraphicsBuffer;
  */
 public class AI : MonoBehaviour
 {
-    //Us/AI
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float AImoveSpeed;
-    [SerializeField] private float AImoveSpeedSlow;
-    [SerializeField] private float AIinvestigateSpeed;
-    [SerializeField] private float AImoveSpeedCenter;
-    [SerializeField] private float turningSpeed; //7 //Also uysed for tracking
-    [SerializeField] private float slowTrackSpeed;
-    //[SerializeField] float AIturnSpeed;
-
-    [SerializeField] private int stateName;
-
-    //bool isHittingWall = false;
-
-
+    [SerializeField] private int stateName; //shows state int in inspector, and
     //Starting position
     [SerializeField] private GameObject startPosition;
 
     //Target
     [SerializeField] private GameObject targetObj;
-    Vector2 detectionVector;
     [SerializeField] private bool targetLocked;
-    float lockOnSpeed;
-    float lockOnSpeedSlow;
 
     bool idleBool = false;
     private Transform pingLocation;
@@ -48,11 +32,15 @@ public class AI : MonoBehaviour
     private float timer;
 
 
-    //Movement 
+    //Movement can chan
     Vector2 engineForceVector;
-    [SerializeField] private float rotationModifier; //10
-    
-    [SerializeField] private float L1turnSpeed; //Speed at which is orients to move to center
+    [SerializeField] private float rotationModifier; //10 keep as is
+    [SerializeField] private float AImoveSpeed; //65 movespeed for Follow and Offensive State 
+    [SerializeField] private float AImoveSpeedSlow; //55 movespeed for Search
+    [SerializeField] private float AIinvestigateSpeed; //55 movespeed when approaching a marker
+    [SerializeField] private float AImoveSpeedCenter; //60 movespeed when returning to centre
+    [SerializeField] private float trackingSpeedFast; //12  turning speed when 
+    [SerializeField] private float L1turnSpeed; //8 Speed at which is orients to move to center
     
     Quaternion q;
     VisionCone visionCone;
@@ -61,7 +49,6 @@ public class AI : MonoBehaviour
     //for Health and Damage system
     [SerializeField] CombatSystem combatSystem;
     [SerializeField] GameObject explosion;
-    bool aliveState = true;
 
     //Combat ("Multiplayer")
     [SerializeField] int index = 0; //unique id for each bot, 0 = ai, 1 = p1, 2 = p2
@@ -69,7 +56,8 @@ public class AI : MonoBehaviour
     private GameOrganizer organizer;
 
 
-    /*Variables for our state machine
+    /* "Auto-Implemented Properties"
+     * Properties for our state machine
     These are automatically implemented by C#, 
     Normally, this would be
     public StateMachine StateMachine{
@@ -90,7 +78,7 @@ public class AI : MonoBehaviour
     {
         
         StateMachine = new StateMachine();
-        //Create instance of new State classes
+        //Create instance of new State classes since these are not Mono Behaviors.
         IdleState = new IdleState(this, StateMachine);
         SearchTargetState = new SearchTargetState(this, StateMachine);
         FollowTargetState = new FollowTargetState(this, StateMachine);  
@@ -125,7 +113,6 @@ public class AI : MonoBehaviour
         GetConeInt();
         if (combatSystem.DeathCheck() == true)
         {
-            aliveState = false;
             Instantiate(explosion, this.transform);
             organizer.PlayerLoses(index);
 
@@ -191,8 +178,6 @@ public class AI : MonoBehaviour
             return false;
         }
     }
-
-
     public bool IsL3()
     {
         int l3 = GetConeInt();
@@ -218,7 +203,6 @@ public class AI : MonoBehaviour
             return false;
         }
     }
-
     public bool IsL2()
     {
         int l2 = GetConeInt();
@@ -255,16 +239,13 @@ public class AI : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * trackingSpeed);
     }
 
-    //Different Tracking speeds;
+    //Kinda redundant but this is used by the states, which doesnt have the variable for trackingSpeed.
     public void TrackingTarget()
     {
-        TrackTarget(turningSpeed);
+        TrackTarget(trackingSpeedFast);
     }
 
-    public void TrackingTargetSlowly()
-    {
-        TrackTarget(slowTrackSpeed);
-    }
+    
     //Generic move forward function that  inputs a direction
     public void MoveForward()
     {
@@ -278,10 +259,6 @@ public class AI : MonoBehaviour
         rb.AddForce(engineForceVector, ForceMode2D.Impulse);
     }
 
-    public void SetL1TurnSpeed(float s)
-    {
-        slowTrackSpeed = s;
-    }
 
     //At center bot has best view with no dead zones
     //also easier to be the one rotating and tracking rather than
@@ -290,8 +267,7 @@ public class AI : MonoBehaviour
     {
         timer = 0f; 
         if (timer < 3)
-        {
-            
+        {        
             timer += Time.deltaTime;
             TrackTarget(L1turnSpeed);
         }
@@ -358,9 +334,7 @@ public class AI : MonoBehaviour
         return marker.activeSelf;   
     }
 
-    /*Uses a short x to give bot some turning time.
-     * 
-     */
+
     public void InvestigateMarker()
     {
  
@@ -388,11 +362,6 @@ public class AI : MonoBehaviour
 
 
         
-    }
-
-    public bool GetState()
-    {
-        return aliveState;
     }
 
     /// <summary>
