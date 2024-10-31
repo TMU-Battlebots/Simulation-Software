@@ -1,14 +1,15 @@
 Hello!
   This is the Unity files for the Toronto Metropolitan University BattleBots Team's Simulation Platform.
-  Version Alpha (v0.1)
+  Version Alpha (v0.2)
   - Visualization of Visual Cones,
   - Implementation of State Machine for Automation: Search, Track, Attack, Idle
   - Simple movement, controls, and Displays.
+  - Health and Damage System
+  - PvP and PvE with Controllers
 
   Goals for next version
   - Fully realize States (search and attack)
   - Target prediction
-  - Add primitive health and damage system 
 
   Combat robotics, more affectionately known internally as BattleBots (from the hit TV series), is a genre of engineering competitions formed around designing and operating robots to fight in an arena.
 Competitors come from all around the world, ranging from young hobbyists starting with prebuilt kits to full engineering teams operating 150lb machines. And of course, plenty of  engineering students looking to take on a challenge.
